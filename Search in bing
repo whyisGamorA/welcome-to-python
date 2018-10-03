@@ -1,0 +1,11 @@
+import requests
+from bs4 import BeautifulSoup
+query=input('Search for:')
+url='https://www.bing.com/search?q='+query
+data=requests.get(url)
+print(data)
+soup=BeautifulSoup(data.content,'html.parser')
+responsedata=soup.find_all('li',{'class':'b_aglo'})
+for i in responsedata:
+	print(i.text)
+	print('\n')
